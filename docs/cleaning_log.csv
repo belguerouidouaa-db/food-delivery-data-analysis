@@ -1,0 +1,20 @@
+issue,affected_column,affected_rows,action_taken,reason
+Missing values,Delivery_person_Age,1854,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,Delivery_person_Ratings,1908,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,Time_Orderd,1731,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,Weather_conditions,616,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,Road_traffic_density,601,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,multiple_deliveries,993,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,Festival,228,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Missing values,City,1200,Retained missing values; no imputation or row deletion,No documented rule supports a reliable replacement.
+Date format,Order_Date,45584,Parsed day-month-year dates and exported in ISO date format,All source dates parsed successfully using %d-%m-%Y.
+Incomplete calendar coverage,Order_Date,11 calendar dates absent,Documented; no dates or records fabricated,The source does not explain the gaps.
+Potentially unusual age,Delivery_person_Age,38,Retained and flagged,No authoritative minimum-age rule was supplied.
+Rating outside apparent pattern,Delivery_person_Ratings,53,Retained and flagged,The official rating scale is undocumented.
+Negative restaurant coordinates,"Restaurant_latitude, Restaurant_longitude",431,Retained and flagged; no sign changes,Correct coordinates cannot be verified from the supplied fields.
+Zero restaurant coordinate pair,"Restaurant_latitude, Restaurant_longitude",3640,Retained and flagged,"Possible placeholder values, but no confirmed replacements."
+Suspicious delivery coordinate pair,"Delivery_location_latitude, Delivery_location_longitude",327,Retained and flagged,"The pair (0.01, 0.01) is suspicious but not verified as an error."
+Mixed time representations,"Time_Orderd, Time_Order_picked",4068 numeric-like order times; 4127 numeric-like pickup times,Retained original representations; no conversion,Mixed HH:MM and decimal-fraction formats require source confirmation.
+Pickup times beyond 24:00,Time_Order_picked,880,Retained original values,"Likely day rollover, but the convention is undocumented."
+Unverified categorical labels,"City, Road_traffic_density",Metropolitian and Jam labels retained,No renaming,Intended meanings cannot be verified without a data dictionary.
+Unverified coded category values,Vehicle_condition,520,Retained all observed codes,Code meanings and valid range are undocumented.
