@@ -1,142 +1,48 @@
 # Food Delivery Data Analysis
-### Kagnus Internship — Week 1: Dataset Understanding & Cleaning
 
-## 1. Project Overview
+## Kagnus Internship Project
 
-This project focuses on understanding, inspecting, and preparing a food delivery dataset for future analysis.
+This project focuses on analyzing a food delivery dataset to understand delivery performance, investigate data quality, and explore operational factors associated with delivery duration.
 
-The main objective of Week 1 is to examine the dataset's structure, identify data quality issues, investigate missing and unusual values, and apply only justified cleaning operations.
+The project is organized into four weekly milestones, with each stage building on the previous one. It emphasizes data accuracy, transparent analytical decisions, reproducibility, and clear communication of findings.
 
-The project emphasizes data quality, transparency, and reproducibility. The original dataset is preserved, and cleaning decisions are documented rather than making assumptions about values whose meaning has not been confirmed.
+## Project Objectives
 
-## 2. Project Objectives
+- Understand the dataset structure, variables, and data quality.
+- Prepare a reliable dataset while preserving the original data.
+- Explore delivery duration and its relationship with operational factors.
+- Identify meaningful patterns and potential areas for further investigation.
+- Communicate findings through data visualizations and evidence-based recommendations.
 
-The main objectives of this project are:
+## Dataset Overview
 
-- Understand the dataset's structure, dimensions, and variables.
-- Identify missing values and examine their distribution.
-- Check for duplicate records and duplicate identifiers.
-- Inspect numerical and categorical variables.
-- Investigate unusual values, inconsistent formats, and potential anomalies.
-- Verify date and time formats before using them in calculations.
-- Apply appropriate cleaning operations while preserving valid information.
-- Document all identified issues and the decisions made.
-- Export a separate cleaned dataset for future analysis.
+The project uses the food delivery dataset provided through the Kagnus internship.
 
-## 3. Dataset Description
+The dataset contains **45,584 records and 20 columns**, covering delivery information such as:
 
-The dataset contains **45,584 records and 20 columns** related to food delivery operations.
-
-Each row represents one delivery record.
-
-The dataset includes information about:
-
-- Delivery personnel, including age and ratings.
+- Delivery person characteristics and ratings.
 - Restaurant and delivery location coordinates.
-- Order dates and order/pickup times.
-- Weather conditions and road traffic density.
-- Vehicle condition and type of vehicle.
-- Order categories and multiple deliveries.
-- Festival information and city classification.
-- Total delivery time in minutes.
+- Order and pickup times.
+- Weather and road traffic conditions.
+- Vehicle type and condition.
+- Multiple deliveries and festival indicators.
+- Total delivery duration.
 
-### Main Variables
+The target variable for the exploratory analysis is `Time_taken (min)`, which represents the recorded delivery duration in minutes.
 
-| Category | Variables |
-|---|---|
-| Delivery information | ID, Delivery_person_ID |
-| Personnel | Delivery_person_Age, Delivery_person_Ratings |
-| Location | Restaurant_latitude, Restaurant_longitude, Delivery_location_latitude, Delivery_location_longitude |
-| Date and time | Order_Date, Time_Orderd, Time_Order_picked |
-| Conditions | Weather_conditions, Road_traffic_density |
-| Vehicle | Vehicle_condition, Type_of_vehicle |
-| Order details | Type_of_order, multiple_deliveries |
-| Other information | Festival, City |
-| Delivery duration | Time_taken (min) |
+The original dataset is preserved. The cleaned version is stored separately in `data/processed/`.
 
-**Note:** An official data dictionary was not available during this stage. Therefore, undocumented codes and unusual values were not automatically reinterpreted.
+## Tools and Technologies
 
-## 4. Tools and Technologies
+- **Python** – Main programming language.
+- **Pandas** – Data manipulation and analysis.
+- **NumPy** – Numerical operations.
+- **Matplotlib** – Data visualization.
+- **Seaborn** – Statistical visualization.
+- **Jupyter Notebook / Google Colab** – Development environment.
+- **Git and GitHub** – Version control and project documentation.
 
-- **Python** — data inspection and cleaning.
-- **Pandas** — data manipulation and analysis.
-- **NumPy** — numerical operations, where needed.
-- **Jupyter Notebook / Google Colab** — interactive development and documentation.
-- **GitHub** — project version control and submission.
-
-## 5. Data Understanding and Quality Checks
-
-The initial inspection included:
-
-- Checking the dataset's dimensions and column names.
-- Reviewing data types and non-null counts.
-- Calculating missing values and their percentages.
-- Checking duplicate rows and duplicate IDs.
-- Examining numerical statistics and categorical distributions.
-- Inspecting date, time, and geographical coordinate fields.
-
-### Main Findings
-
-#### Missing Values
-
-Several columns contain missing values, including:
-
-- `Delivery_person_Age`
-- `Delivery_person_Ratings`
-- `Time_Orderd`
-- `Weather_conditions`
-- `Road_traffic_density`
-- `multiple_deliveries`
-- `Festival`
-- `City`
-
-Missing values were examined to understand their distribution and possible relationships. No automatic imputation was performed because the appropriate replacement values could not be established with sufficient confidence.
-
-#### Duplicate Records
-
-No fully duplicated rows were identified.
-
-The `ID` column also contains no duplicated identifiers.
-
-#### Date and Time
-
-The order date values were successfully interpreted using the source date format.
-
-The time columns contain different representations, including standard time strings, decimal-looking values, and values exceeding the usual 24-hour clock range.
-
-These values require clarification from the dataset source before applying potentially incorrect conversions. Original time values were therefore preserved.
-
-#### Numerical and Categorical Values
-
-Numerical variables were examined for unusual minimums, maximums, and distributions.
-
-Categorical variables were inspected for missing values, inconsistent labels, and unexpected categories.
-
-Some values, such as delivery ratings of 6 and certain age or coordinate values, require confirmation before being classified as invalid.
-
-#### Geographical Coordinates
-
-Some restaurant coordinates contain zero values or negative latitude values.
-
-These patterns were investigated and documented as potential data quality issues. However, no coordinate corrections were applied because the correct geographical values could not be established from the available information.
-
-## 6. Cleaning Strategy and Decisions
-
-The cleaning process followed a conservative approach:
-
-1. Preserve the original dataset.
-2. Investigate each identified issue before making changes.
-3. Avoid deleting records solely because they contain unusual values.
-4. Avoid replacing missing values without a justified method.
-5. Preserve ambiguous values until additional information is available.
-6. Document cleaning decisions and their reasons.
-7. Export the cleaned dataset separately from the raw data.
-
-A cleaning log is included in `docs/cleaning_log.csv`.
-
-It records the issue, affected column, number of affected rows, action taken, and reason for the decision.
-
-## 7. Project Structure
+## Project Structure
 
 ```text
 food-delivery-data-analysis/
@@ -144,12 +50,15 @@ food-delivery-data-analysis/
 ├── data/
 │   ├── raw/
 │   │   └── README.md
-│   │
 │   └── processed/
 │       └── cleaned_food_delivery.csv
 │
 ├── notebooks/
-│   └── 01_data_understanding_and_cleaning.ipynb
+│   ├── 01_data_understanding_and_cleaning.ipynb
+│   └── 02_exploratory_data_analysis.ipynb
+│
+├── visualizations/
+│   └── initial_distance_vs_duration.png
 │
 ├── docs/
 │   └── cleaning_log.csv
@@ -158,87 +67,102 @@ food-delivery-data-analysis/
 └── requirements.txt
 ```
 
-### Folder Description
+## Weekly Progress
 
-- `data/raw/`: Information about the original dataset. The original file is kept separate and unchanged.
-- `data/processed/`: Contains the cleaned dataset generated by the notebook.
-- `notebooks/`: Contains the notebook documenting the inspection and cleaning process.
-- `docs/`: Contains the cleaning log and documented decisions.
-- `requirements.txt`: Lists the Python libraries required to run the project.
-- `README.md`: Provides an overview of the project and instructions.
+### Week 1 — Dataset Understanding and Cleaning
 
-## 8. How to Run the Project
+**Objective:** Understand the dataset, identify data quality issues, and prepare a separate cleaned dataset for subsequent analysis.
 
-### Step 1 — Clone the Repository
+Work completed:
 
-```bash
-git clone https://github.com/belguerouidouaa-db/food-delivery-data-analysis.git
-```
+- Inspected the dataset structure, columns, data types, and descriptive statistics.
+- Investigated missing values, duplicate records, inconsistent categories, and unusual numerical values.
+- Examined potential anomalies in coordinate and rating fields.
+- Applied only justified cleaning operations and documented relevant decisions in a cleaning log.
+- Preserved the original dataset and exported the processed version.
 
-### Step 2 — Navigate to the Project Folder
+**Key data quality observations:**
 
-```bash
-cd food-delivery-data-analysis
-```
+- Missing values were identified across several columns, including delivery person age, ratings, order time, weather, traffic density, and city.
+- No duplicate IDs or fully duplicated records were identified.
+- Fifty-three delivery ratings had a value of 6, outside the expected 1–5 scale. These values were investigated rather than automatically removed.
+- Unusual coordinate values and category variations were documented without making unsupported assumptions.
 
-### Step 3 — Install Dependencies
+**Output:** `notebooks/01_data_understanding_and_cleaning.ipynb`
 
-```bash
-pip install -r requirements.txt
-```
+### Week 2 — Exploratory Data Analysis (EDA)
 
-### Step 4 — Prepare the Dataset
+**Objective:** Explore delivery duration and investigate its relationship with selected operational factors.
 
-Place the original dataset inside:
+Work completed:
 
-```text
-data/raw/
-```
+- Calculated descriptive statistics to establish a baseline for delivery duration.
+- Examined the delivery-time distribution using histograms and boxplots.
+- Compared delivery duration across traffic, weather, vehicle type, and multiple-delivery categories.
+- Grouped delivery ratings into broader categories to make comparisons easier to interpret.
+- Investigated the relationship between geographical distance and delivery duration using the Haversine formula, correlation analysis, and an initial scatter plot.
+- Compared alternative coordinate-filtering scenarios to understand how coordinate assumptions influence the distance analysis.
+- Conducted a sensitivity comparison to evaluate the effect of excluding the 53 rating values of 6.
 
-The original dataset is not included in the repository. Refer to `data/raw/README.md` for information about obtaining it.
+**Initial delivery-duration baseline:**
 
-### Step 5 — Run the Notebook
+| Metric | Result |
+|---|---:|
+| Number of records | 45,584 |
+| Mean | 26.29 minutes |
+| Median | 26 minutes |
+| Minimum | 10 minutes |
+| Maximum | 54 minutes |
+| Standard deviation | 9.38 minutes |
+| First quartile (Q1) | 19 minutes |
+| Third quartile (Q3) | 32 minutes |
 
-Open the following notebook using Jupyter Notebook or Google Colab:
+**Selected preliminary observations:**
 
-```text
-notebooks/01_data_understanding_and_cleaning.ipynb
-```
+- Orders in the `Jam` traffic category had the highest average delivery duration (31.18 minutes), while `Low` traffic had the lowest (21.27 minutes).
+- Cloudy and foggy weather categories had the highest average delivery durations, at approximately 28.9 minutes.
+- Motorcycle deliveries had an average duration of 27.61 minutes, compared with approximately 24.5 minutes for scooter and electric scooter deliveries.
+- Delivery duration increased across the multiple-delivery categories: the average ranged from 22.88 minutes for zero multiple deliveries to 47.82 minutes for three.
+- The rating-group comparison showed longer average delivery durations in the lower-rating group than in the higher-rating group. This is an association, not evidence of causation.
 
-Run the cells in order to reproduce the inspection and cleaning process.
+These observations are exploratory and should be interpreted alongside group sizes, missing values, and the limitations of the dataset.
 
-The notebook generates the cleaned dataset in:
+**Output:** `notebooks/02_exploratory_data_analysis.ipynb`
 
-```text
-data/processed/cleaned_food_delivery.csv
-```
+**Initial distance visualization:** `visualizations/initial_distance_vs_duration.png`
 
-## 9. Limitations and Assumptions
+### Upcoming Milestones
 
-Some data quality issues cannot be resolved confidently without additional documentation.
+- **Week 3 — Data Visualization:** Develop and refine the final visualizations to communicate the most important patterns.
+- **Week 4 — Final Analysis and Reporting:** Consolidate findings, develop evidence-based recommendations, and prepare the final project report.
 
-These include:
+## Running the Project
 
-- The meaning and validity of certain numerical values.
-- The correct interpretation of unusual time representations.
-- The validity of zero and negative geographical coordinates.
-- The meaning of some categorical labels.
-- The reason behind missing values and gaps in the observed dates.
+1. Clone or download this repository.
+2. Install the required Python packages:
 
-These limitations are documented rather than resolved through unsupported assumptions.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-The cleaned dataset should therefore be understood as a carefully inspected and prepared version of the available data, not as proof that every underlying data issue has been resolved.
+3. Ensure that the cleaned dataset is available at:
 
-## 10. Conclusion
+   `data/processed/cleaned_food_delivery.csv`
 
-Week 1 established a foundation for future food delivery data analysis by examining the dataset, identifying data quality issues, and documenting cleaning decisions.
+4. Open the required notebook using Jupyter Notebook, JupyterLab, or Google Colab.
+5. Execute the notebook cells in order.
 
-The project prioritizes preserving information, making justified decisions, and maintaining a reproducible workflow.
+The original dataset is not included in the repository unless redistribution is permitted. Refer to `data/raw/README.md` for its source and access information.
 
-This preparation will support subsequent analysis while ensuring that future conclusions are based on a dataset whose limitations and quality issues are clearly understood.
+## Assumptions and Limitations
 
----
+- The dataset does not include an official data dictionary, so undocumented variable meanings and encodings are not assumed.
+- Some missing values and unusual observations are retained where their correction or removal cannot be justified.
+- The coordinate-based distance analysis uses alternative filtering scenarios because the meaning of certain coordinate values could not be confirmed.
+- Correlation and grouped comparisons identify associations and patterns; they do not establish causal relationships.
+- Results depend on the available records and their data quality.
 
-**Project:** Food Delivery Data Analysis  
-**Program:** Kagnus Internship  
-**Milestone:** Week 1 — Dataset Understanding & Cleaning
+## Repository
+
+[Food Delivery Data Analysis — GitHub](https://github.com/belguerouidoua-db/food-delivery-data-analysis)
+
