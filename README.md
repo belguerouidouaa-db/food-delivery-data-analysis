@@ -55,10 +55,16 @@ food-delivery-data-analysis/
 │
 ├── notebooks/
 │   ├── 01_data_understanding_and_cleaning.ipynb
-│   └── 02_exploratory_data_analysis.ipynb
+│   ├── 02_exploratory_data_analysis.ipynb
+│   └── 03_visualization.ipynb
 │
 ├── visualizations/
-│   └── initial_distance_vs_duration.png
+│   ├── initial_distance_vs_duration.png
+│   ├── 01_delivery_duration_distribution.png
+│   ├── 02_traffic_comparison.png
+│   ├── 03_weather_comparison.png
+│   ├── 04_distance_vs_duration.png
+│   └── 05_vehicle_comparison.png
 │
 ├── docs/
 │   └── cleaning_log.csv
@@ -131,9 +137,79 @@ These observations are exploratory and should be interpreted alongside group siz
 
 **Initial distance visualization:** `visualizations/initial_distance_vs_duration.png`
 
-### Upcoming Milestones
+### Week 3 — Visualization and Interpretation
 
-- **Week 3 — Data Visualization:** Develop and refine the final visualizations to communicate the most important patterns.
+**Objective:** Transform the findings from Week 2 into clear and meaningful visualizations to communicate delivery-duration patterns and differences across operational factors.
+
+Five visualizations were created using Matplotlib and Pandas, based on the cleaned dataset and calculations performed during the previous weeks.
+
+**Visualizations created:**
+
+**1. Delivery Duration Distribution — Histogram**
+
+File: [`01_delivery_duration_distribution.png`](visualizations/01_delivery_duration_distribution.png)
+
+- Displays the distribution of delivery durations across the dataset.
+- Most delivery durations are concentrated approximately between 19 and 30 minutes.
+- The distribution is positively (right) skewed, with fewer deliveries taking considerably longer.
+
+**2. Traffic Comparison — Bar Chart**
+
+File: [`02_traffic_comparison.png`](visualizations/02_traffic_comparison.png)
+
+- Compares median delivery duration across traffic categories.
+- Jam traffic has the highest median delivery duration (31 minutes), while Low traffic has the lowest (20 minutes).
+- High and Medium traffic categories have similar median durations of approximately 27 minutes.
+
+**3. Weather Comparison — Bar Chart**
+
+File: [`03_weather_comparison.png`](visualizations/03_weather_comparison.png)
+
+- Compares average delivery duration across weather conditions.
+- Cloudy and Fog conditions show the highest average delivery durations, at approximately 28.9 minutes.
+- Sunny conditions show the lowest average duration, at approximately 21.9 minutes.
+
+**4. Distance vs. Delivery Duration — Scatter Plot**
+
+File: [`04_distance_vs_duration.png`](visualizations/04_distance_vs_duration.png)
+
+- Examines the relationship between calculated delivery distance and delivery duration.
+- The Pearson correlation coefficient is approximately 0.3205, indicating a positive association between distance and delivery duration.
+- Scenario B was used for coordinate handling: suspicious delivery-coordinate pairs and zero restaurant coordinates were excluded, while negative restaurant coordinates were converted to absolute values. This assumption was retained as a sensitivity-analysis approach rather than a verified geographical correction.
+
+**5. Vehicle Comparison — Box Plot**
+
+File: [`05_vehicle_comparison.png`](visualizations/05_vehicle_comparison.png)
+
+- Compares delivery-duration distributions across vehicle categories using medians, interquartile ranges, whiskers, and outliers.
+- Motorcycles and bicycles have median delivery durations of approximately 26 minutes, while scooters and electric scooters have medians of approximately 24 minutes.
+- The bicycle category contains only 68 deliveries, compared with 26,429 motorcycle deliveries, so comparisons involving bicycles should be interpreted cautiously.
+
+**Tools and techniques used:**
+
+- **Pandas:** Data preparation, grouping, and aggregation.
+- **NumPy:** Numerical calculations.
+- **Matplotlib:** Creating and customizing visualizations.
+- **Python:** Data manipulation, functions, and loops.
+
+**Key notes and limitations:**
+
+- All visualizations were generated using the cleaned dataset from Week 1 and the analytical findings from Week 2.
+- The original Week 1 and Week 2 notebooks were preserved.
+- Observed differences and relationships do not establish causation.
+- Some categories have considerably smaller sample sizes than others.
+- Distance results depend on the coordinate-handling assumptions used in Scenario B.
+
+**Deliverables:**
+
+- `notebooks/03_visualization.ipynb`
+- Five exported PNG visualizations in the `visualizations/` folder.
+- Written interpretations and limitations for each chart.
+
+**Status:** Week 3 visualization and interpretation completed.
+
+### Upcoming Milestone
+
 - **Week 4 — Final Analysis and Reporting:** Consolidate findings, develop evidence-based recommendations, and prepare the final project report.
 
 ## Running the Project
